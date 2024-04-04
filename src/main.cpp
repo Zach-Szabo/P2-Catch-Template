@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 map<string,vector<int>> AdjacencyMap;
@@ -46,7 +47,7 @@ void PageRank(int n){
         RankMap[pair.first] = 1.0 / URLMaps.size();
     }
     //Runs the rank calculation N times
-    for (int i = 0; i < n; i++){
+    for (int i = 1; i < n; i++){
         map<string,double> newRankMap;
         //Traverses through the AdjacencyMap to find all the paths connecting the websites
         for (auto& website : AdjacencyMap) {
@@ -67,11 +68,10 @@ void PageRank(int n){
         }
         RankMap = newRankMap;
     }
-    //Round the decimal places to the nearest two
-    for (auto& website : RankMap) {
-        website.second = round(website.second * 100) / 100;
-    }
+
     //Print the result
+    //Round everything to the second decimal
+    cout << fixed << setprecision(2);
     for (auto& website : RankMap) {
         cout << website.first << " " << website.second << endl;
     }
