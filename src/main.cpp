@@ -15,6 +15,7 @@ void addPath(string firstURL, string secondURL){
         URLMaps.insert({firstURL,URLNum});
         vector <int> emptyVector;
         AdjacencyMap.insert({firstURL,emptyVector});
+        OutDegreeMap.insert({firstURL,0});
         URLNum ++;
     }
     if(URLMaps.find(secondURL) == URLMaps.end()){
