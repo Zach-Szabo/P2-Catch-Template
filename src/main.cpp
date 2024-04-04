@@ -15,7 +15,6 @@ void addPath(string firstURL, string secondURL){
         URLMaps.insert({firstURL,URLNum});
         vector <int> emptyVector;
         AdjacencyMap.insert({firstURL,emptyVector});
-        OutDegreeMap.insert({firstURL,1});
         URLNum ++;
     }
     if(URLMaps.find(secondURL) == URLMaps.end()){
@@ -61,7 +60,6 @@ void PageRank(int n){
                         LinkedURL = name.first;
                     }
                 }
-                cout << "Out Degree: " << OutDegreeMap[LinkedURL] << endl;
                 newRank += RankMap[LinkedURL] / OutDegreeMap[LinkedURL];
             }
             newRankMap[website.first] = newRank;
@@ -89,6 +87,6 @@ int main() {
         addPath(from,to);
     }
     PageRank(power_iterations);
-    
+
     return 0;
 }
